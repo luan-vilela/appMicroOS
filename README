@@ -1,0 +1,6 @@
+npm install express --save
+npm install sequelize --save
+npm install mysql2 --save
+npm install express-handlebars --save 
+npm install body-parser --save
+npm install node-adodb --save   // trabalhar com banco de dados atual dá empresa
