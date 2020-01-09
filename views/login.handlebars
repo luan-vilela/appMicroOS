@@ -1,0 +1,27 @@
+  <!-- Header -->
+  <header class="w3-container w3-theme w3-large w3-padding-24 w3-margin-bottom">
+    <a href="/" class="w3-left w3-xlarge" style="text-decoration: none;">ELETRÔNICA ALFA</a>
+    <a href="/login" class="w3-right w3-small" style="text-decoration: none;">
+        <i class='fa fa-key' style='font-size:16px'></i> Área restrita
+        </a>
+  </header>
+
+  <!-- Login -->
+<div class="w3-display-container" > 
+    <div class="w3-display-topmiddle">
+        <div class="w3-container w3-theme">
+            <h2>Acesso Restrito</h2>
+        </div>
+        <form class="w3-container w3-card-4 w3-padding-16" method="POST" style="min-width: 350px;" action="/acesso">
+            <p>      
+            <label class="w3-text-blue" for="user"><b>Usuário</b></label>
+            <input class="w3-input w3-border" name="user" id="user" type="text"></p>
+            <p>      
+            <label class="w3-text-blue" for="senha"><b>Senha</b></label>
+            <input class="w3-input w3-border" name="senha" id="senha" type="password"></p>
+            <p>
+            {{!-- <button class="w3-btn w3-blue" onclick='history.back()'>Voltar</button>       --}}
+            <button class="w3-btn w3-blue w3-right">Entrar</button></p>
+        </form>
+    </div>
+</div>
