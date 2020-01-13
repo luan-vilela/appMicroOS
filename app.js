@@ -1,35 +1,50 @@
-const express = require('express');
-const exphbs = require('express-handlebars');
-
-const app = express();
+// Módulos
+    const express = require('express');
+    const exphbs = require('express-handlebars');
+    const bodyParser = require('body-parser');
+    const path = require('path');
+    const routerAdmin = require('./routes/admin');
+    const app = express();
+    const config = require('./src/config')
 
 
 /************************ 
  *      CONFIGURAÇÃO
  ************************/
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+    
+    //Handlebars
+    app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+    app.set('view engine', 'handlebars');
+
+    //Body-Parser
+    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.json());
 
 /************************ 
+ *      PUBLIC
+ ************************/
+    app.use(express.static(__dirname + '/public'));
+
+
+ /************************ 
  *      ROTAS
  ************************/
+    //Admin
+    app.use('/admin', routerAdmin);
 
-// página inicial
- app.get('/', function(req, res){
-    res.render('home');
- });
- app.get('/login', function(req, res){
-    res.render('login');
- });
-app.post('/acesso', function(req, res){
-    res.send("logado")
-});
+    //locais
+    app.get('/', (req, res) => {
+        res.render('home');
+    });
 
-// Página não encontrada ou erros
-app.use(function(req, res, next) {
-    res.send('OK, algo de certo está errado!');
-  });
+    app.get('/tec/altair', (req, res) => {
+        res.render('home');
+    });
 
-app.listen(3000, function(){
+
+ /************************ 
+ *      OUTRAS
+ ************************/
+app.listen(config.SERVER_PORT, function(){
     console.log('Servidor iniciado.');
 });
