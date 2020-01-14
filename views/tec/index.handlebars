@@ -1,0 +1,57 @@
+<div class="alert alert-warning align-middle"><img class="m-1 rounded" src="/img/alert-warning.svg" alt="Atenção" width="32" height="32"> Vôce tem ordem de serviços com mais de 3 dias.</div>
+
+<div class="conteiner">
+    <div class="card-deck mb-3 text-center text-white">
+      
+       <div class="card bg-info mb-4 shadow-lg" onclick="window.location='/tec/os/novas'" style="cursor: pointer;">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Novas OS</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Ultima OS feita 12548</li>
+              <li>Fechada há 28 minutos</li>
+              <li>Suporte por email</li>
+            </ul>
+            <img class="mb-3 rounded mx-auto d-block" src="/img/plus.svg" alt="OS recentes" width="72" height="72">
+            <span class="badge badge-primary badge-pill float-right">14</span>
+            {{!-- <button type="button" class="btn btn-lg btn-block btn-primary" onclick="window.location='tec/altair'">Ordem de serviço</button> --}}
+          </div>
+          <div class="card-footer bg-transparent card-text"><small class="text-secondary">Last updated 3 mins ago</small></div>
+        </div>
+
+        <div class="card bg-warning mb-4 shadow-lg" onclick="window.location='/tec/os/aguardo'" style="cursor: pointer;">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Aguardando</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Ultima OS feita 12548</li>
+              <li>Fechada há 28 minutos</li>
+              <li>Suporte por email</li>
+            </ul>
+            <img class="mb-3 rounded mx-auto d-block" src="/img/load.svg" alt="OS recentes" width="72" height="72">
+            <span class="badge badge-primary badge-pill float-right">52</span>
+          </div>
+          <div class="card-footer bg-transparent card-text"><small class="text-secondary">Last updated 3 mins ago</small></div>
+        </div>
+
+        <div class="card bg-success mb-4 shadow-lg" onclick="window.location='/tec/os/aprovadas'" style="cursor: pointer;">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Aprovadas</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Ultima OS feita 12548</li>
+              <li>Fechada há 28 minutos</li>
+              <li>Suporte por email</li>
+            </ul>
+            <img class="mb-3 rounded mx-auto d-block" src="/img/done.svg" alt="OS recentes" width="72" height="72" >
+            <span class="badge badge-primary badge-pill float-right">1</span>
+            {{!-- <button type="button" class="btn btn-lg btn-block btn-primary">Ordem de serviço</button> --}}
+          </div>
+          <div class="card-footer bg-transparent card-text"><small class="text-secondary">Last updated 3 mins ago</small></div>
+        </div>
+
+    </div>
+</div>

@@ -7,7 +7,7 @@ const router = express.Router();
  /************************ 
  *      ROTAS
  ************************/
-router.get('/', (req, res) => {
+router.get('/index', (req, res) => {
     res.render('admin/index');
 });
 

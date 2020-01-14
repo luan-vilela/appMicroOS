@@ -4,6 +4,7 @@
     const bodyParser = require('body-parser');
     const path = require('path');
     const routerAdmin = require('./routes/admin');
+    const routerTec = require('./routes/tec');
     const app = express();
     const config = require('./src/config')
 
@@ -31,13 +32,10 @@
  ************************/
     //Admin
     app.use('/admin', routerAdmin);
+    app.use('/tec', routerTec);
 
     //locais
     app.get('/', (req, res) => {
-        res.render('home');
-    });
-
-    app.get('/tec/altair', (req, res) => {
         res.render('home');
     });
 
