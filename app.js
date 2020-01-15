@@ -43,6 +43,9 @@
  /************************ 
  *      OUTRAS
  ************************/
+
 app.listen(config.SERVER_PORT, function(){
     console.log('Servidor iniciado.');
 });
+
+

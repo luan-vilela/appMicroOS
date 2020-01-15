@@ -1,29 +1,24 @@
-<div id="toolbar">
-  <button id="button" class="btn btn-secondary">getSelections</button>
-</div>
-
 <table
   id="table"
   data-toggle="table"
   data-height="680"
-  data-click-to-select="true"
   data-single-select="true"
+  data-click-to-select="true"
   data-pagination="true"
   data-search="true"
   data-page-size="10"
   data-page-list="[10, 20, 25, 50, 100, All]"
-
   >
 
     <thead>
         <tr>
-           <th data-radio="true"></th>
+            <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">#</th>
-            <th>Tipo</th>
+            <th data-field="tipo" >Tipo</th>
             <th data-field="name" data-sortable="true">Nome</th>
-            <th >Aparelho</th>
-            <th >Marca</th>
-            <th >Modelo</th>
+            <th data-field="aparelho">Aparelho</th>
+            <th data-field="marca">Marca</th>
+            <th data-field="modelo">Modelo</th>
             <th data-field="data" data-sortable="true">Data de entrada</th>
         </tr>
     </thead>

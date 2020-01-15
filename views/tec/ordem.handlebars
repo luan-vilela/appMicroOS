@@ -1,0 +1,196 @@
+<form class="form-group" action="#" method="GET">
+    {{!-- Dados do cliente --}}
+    <div class="d-flex">
+        <hr class="my-auto flex-grow-1">
+        <div class="px-4 text-secondary">ORDEM DE SERVIÇO <strong>{{id}}</strong></div>
+        <hr class="my-auto flex-grow-1">
+    </div>
+    <div class="form-row mb-5">
+        <div class="col-md-8">
+            <label for="cliente">Cliente</label>
+            <input type="text" class="form-control" id="cliente" placeholder="Nome" value="Charles Philip Arthur George"
+                readonly>
+        </div>
+        <div class="col-md-4">
+            <label for="data">Data de Entrada</label>
+            <input type="data" class="form-control" id="data" placeholder="Nome" value="12/02/2001" readonly>
+        </div>
+    </div>
+
+    {{!-- Dados do Aparelho --}}
+    <div class="d-flex">
+        <hr class="my-auto flex-grow-1">
+        <div class="px-4 text-secondary">Dados do aparelho</div>
+        <hr class="my-auto flex-grow-1">
+    </div>
+    <div class="form-row mb-2">
+        <div class="col-md-4">
+            <label for="aparelho">Aparelho</label>
+            <input type="text" class="form-control" id="aparelho" placeholder="Aparelho" value="Televisão" readonly>
+        </div>
+        <div class="col-md-4">
+            <label for="modelo">Modelo</label>
+            <input type="text" class="form-control" id="modelo" placeholder="Modelo" value="BX42se" readonly>
+        </div>
+        <div class="col-md-4">
+            <label for="serie">Série</label>
+            <input type="text" class="form-control" id="serie" placeholder="Série" value="125s7e9dnd62" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        Acessórios<br />
+        {{!-- <span class="badge badge-dark mr-4 ml-4"> 4</span> --}}
+
+        <span class="badge badge-primary">Cabo</span>
+        <span class="badge badge-primary">Suporte de parede</span>
+        <span class="badge badge-primary">Controle com pilhas</span>
+        <span class="badge badge-primary">Controle sem tampa</span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="observacao">Observação</label>
+        <textarea class="form-control" id="observacao" rows="3"
+            readonly>Controle quebrado nas pontas e pilhas recarregaveis marca Philips.&#10; Tela arranhada de Caneta e suja.</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="defeito">Defeito</label>
+        <textarea class="form-control" id="defeito" rows="3"
+            readonly>Não liga.&#10;Cliente reclama que aparelho apresentou defeito após gato derrubar aparelho no chão e vizinho ligar furadeira.</textarea>
+    </div>
+
+    {{!-- Laudo técnico --}}
+    <div class="d-flex mt-4">
+        <hr class="my-auto flex-grow-1">
+        <div class="px-4 text-secondary">Laudo técnico</div>
+        <hr class="my-auto flex-grow-1">
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="laudo">Laudo</label>
+        <textarea class="form-control" id="laudo" rows="3" placeholder="Entre com o laudo técnico."></textarea>
+    </div>
+
+    <div class="form-group mb-0">
+        <div class="form-row">
+            <label for="peca">Peça <span id="qtdPeca" class="badge badge-dark ml-1">8</span></label>
+            <div class="input-group mb-1">
+                <input type="text" class="form-control" placeholder="Nome e modelo da peça"
+                    aria-label="Nome e modelo da peça" id="peca" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <input type="button" class="btn btn-primary" id="button-addon2" onclick="add()"
+                        value=" + adicionar">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {{!-- tags peças --}}
+    <div class="form-group">
+        <div id="addPeca"></div>
+    </div>
+
+
+
+    <div class="card text-center mt-4">
+        <div class="card-header">
+                Situação
+        </div>
+        <div class="card-body">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Aparelho Pronto</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Aparelho aguardando peça</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Passar Orçamento</label>
+            </div>
+        </div>
+        <div><button class="btn btn-primary mb-2">Fechar OS</button></div>
+    </div>
+    {{!-- rodapé --}}
+    <footer class=" pt-5 text-muted text-center text-small">
+        <p class="mb-1">Última alteração 12-01-20</p>
+    </footer>
+</form>
+
+
+{{!-- Javascript controle de peças  --}}
+<script>
+    var qtdNumero = 0
+    var qtd = document.getElementById('qtdPeca');
+    var peca = document.getElementById('peca');
+    var listaPeca = document.getElementById('addPeca');
+    var lista = ['Cabo', 'Suporte de parede'];
+
+    peca.addEventListener("keypress", function (event) {
+        if (event.keyCode === 13) {
+            add();
+            event.preventDefault();
+            return false
+
+        }
+        return false
+
+    });
+
+    // gera tag peças
+    for (item in lista) {
+        listaPeca.innerHTML += addElement(item);
+        qtdNumero++;
+    }
+    // renderiza
+    renderQtd();
+
+    function renderQtd() {
+        qtd.innerText = qtdNumero;
+    }
+
+    function renderElement() {
+        listaPeca.innerHTML += addElement(lista.length - 1)
+        renderQtd();
+    }
+
+    function addElement(item) {
+        return element = `<span class="badge badge-primary mr-2" id="itemCompra${item}" onclick="return remove(${item})">${lista[item]}</span>`;
+    }
+
+    function add() {
+        if (peca.value.length < 3) {
+            alert("Nome de peça inválida!")
+        }
+        else {
+            lista.push(peca.value)
+            qtdNumero++;
+            peca.value = '';
+            peca.focus();
+            renderElement();
+
+        }
+    }
+
+    function remove(id) {
+
+        let item = document.getElementById('itemCompra' + id)
+        let nomeItem = item.innerText;
+        if (window.confirm("Deseja remover " + nomeItem + "?")) {
+            if (listaPeca.parentNode) {
+                listaPeca.removeChild(item)
+                lista[Number(id)] = '';
+                qtdNumero--;
+
+            }
+        }
+        renderQtd();
+        return false
+    }
+
+
+
+</script>
