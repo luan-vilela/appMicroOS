@@ -6,15 +6,15 @@ const router = express.Router();
  ************************/
 router.get('/:tecnico', (req, res) => {
     
-    res.render('tec/index', {tecnico: req.params.tecnico, nav: 1})
+    res.render('tec/index', {tecnico: req.params.tecnico, tec: 'tec'})
 });
 
 router.get('/os/:tipo', (req, res) => {
-    res.render('tec/tabela', {tipo: req.params.tipo, nav: 1});
+    res.render('tec/tabela', {tipo: req.params.tipo, tec: 'tec'});
 });
 
 router.get('/os/ordem/:id', (req, res) => {
-    res.render('tec/ordem', {id: req.params.id, nav: 1})
+    res.render('tec/ordem', {id: req.params.id, tec: 'tec'})
 })
 
 

@@ -69,13 +69,14 @@
 
     <div class="form-group mb-2">
         <label for="laudo">Laudo</label>
-        <textarea class="form-control" id="laudo" rows="3" placeholder="Entre com o laudo técnico."></textarea>
+        <textarea class="form-control" id="laudo" name="laudo" rows="3" placeholder="Entre com o laudo técnico."></textarea>
     </div>
 
     <div class="form-group mb-0">
         <div class="form-row">
             <label for="peca">Peça <span id="qtdPeca" class="badge badge-dark ml-1">8</span></label>
             <div class="input-group mb-1">
+                <input type="text" name="listaPeca" id="listaPeca" hidden> 
                 <input type="text" class="form-control" placeholder="Nome e modelo da peça"
                     aria-label="Nome e modelo da peça" id="peca" aria-describedby="button-addon2">
                 <div class="input-group-append">
@@ -94,22 +95,22 @@
 
 
 
-    <div class="card text-center mt-4">
-        <div class="card-header">
+    <div class="card text-center mt-4 border-primary">
+        <div class="card-header bg-primary text-white">
                 Situação
         </div>
         <div class="card-body">
             <div class="custom-control custom-checkbox custom-control-inline">
-                <input type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline1">Aparelho Pronto</label>
+                <input type="checkbox" id="apPronto" name="apPronto" class="custom-control-input">
+                <label class="custom-control-label" for="apPronto">Aparelho Pronto</label>
             </div>
             <div class="custom-control custom-checkbox custom-control-inline">
-                <input type="checkbox" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">Aparelho aguardando peça</label>
+                <input type="checkbox" id="apAguardando" name="apAguardando" class="custom-control-input">
+                <label class="custom-control-label" for="apAguardando">Aparelho aguardando peça</label>
             </div>
             <div class="custom-control custom-checkbox custom-control-inline">
-                <input type="checkbox" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">Passar Orçamento</label>
+                <input type="checkbox" id="apOrcamento" name="apOrcamento" class="custom-control-input">
+                <label class="custom-control-label" for="apOrcamento">Passar Orçamento</label>
             </div>
         </div>
         <div><button class="btn btn-primary mb-2">Fechar OS</button></div>
@@ -128,7 +129,7 @@
     var peca = document.getElementById('peca');
     var listaPeca = document.getElementById('addPeca');
     var lista = ['Cabo', 'Suporte de parede'];
-
+    var inputLista = document.getElementById('listaPeca')
     peca.addEventListener("keypress", function (event) {
         if (event.keyCode === 13) {
             add();
@@ -150,11 +151,13 @@
 
     function renderQtd() {
         qtd.innerText = qtdNumero;
+        inputLista.value = lista.toString()
     }
 
     function renderElement() {
         listaPeca.innerHTML += addElement(lista.length - 1)
         renderQtd();
+        
     }
 
     function addElement(item) {
