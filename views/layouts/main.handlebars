@@ -13,14 +13,15 @@
 </head>
 <body>
     {{#if adm}}
-       Menu administrador
+       {{>_navadm}}
     {{else}}
         {{#if tec}}
-            Menu Técnico
+            {{>_navtec}}
         {{else}}
             {{>_navbar}}
         {{/if}}
     {{/if}}
+
      {{!-- Centraliza corpo --}}
     <div class="container mt-4">
         {{!-- {{>_msg}} --}}

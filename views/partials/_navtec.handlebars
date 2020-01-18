@@ -1,0 +1,51 @@
+<nav class="navbar navbar-icon-top navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/tec/nome">Eletrônica alfa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <ul class="navbar-nav nav">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cog">
+                        </i>
+                        Configuração
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Minhas OS</a>
+                        <a class="dropdown-item" href="#">Gráficos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Meu perfil</a>
+                    </div>
+                </li>
+
+                {{!-- Mensagens --}}
+                <li class="nav-item">
+                <a class="nav-link" href="mensagens">
+                <i class="fa fa-envelope-o">
+                    <span class="badge badge-primary">{{mensagen}}</span>
+                </i>
+                Mensagem
+                </a>
+            </li>
+            
+                <li class="nav-item">
+                <a class="nav-link" href="/tec/user/logout">
+                <i class="fa fa-sign-out">
+                </i>
+                Sair
+                </a>
+            </li>
+            
+            </ul>
+
+
+        </div>
+    </div>
+</nav>

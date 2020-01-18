@@ -7,13 +7,21 @@ const config = require('../src/config')
  /************************ 
  *      ROTAS
  ************************/
-router.post('/index', (req, res) => {
+router.get('/index', (req, res) => {
     res.render('admin/index', {adm: 'adm'});
+});
+router.post('/auth', (req, res) => {
+    res.redirect('/admin/index');
 });
 
 router.get('/login', (req, res) => {
     res.render('admin/login');
 });
+
+router.get('/os/:tipo', (req, res) => {
+    res.render('admin/tabela', {tipo: req.params.tipo, adm: 'adm'});
+});
+
 
 
 module.exports = router;
