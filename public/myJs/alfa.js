@@ -2,6 +2,7 @@ var $table = $('#table')
 
 $table.click(() => {
   let obj  = $table.bootstrapTable('getSelections');
+  console.log(obj)
   obj = obj[0];
   
   
@@ -15,7 +16,7 @@ $table.click(() => {
 
 
 
- var $table = $('#tableADM')
+ var $tableADM = $('#tableADM')
 
 function operateFormatter(value, row, index) {
   return [
@@ -39,7 +40,7 @@ window.operateEvents = {
     alert('You click like action, row: ' + JSON.stringify(row))
   },
   'click .remove': function (e, value, row, index) {
-    $table.bootstrapTable('remove', {
+    $tableADM.bootstrapTable('remove', {
       field: 'id',
       values: [row.id]
     })
