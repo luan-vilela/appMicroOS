@@ -2,6 +2,7 @@
     const express = require('express');
     const exphbs = require('express-handlebars');
     const bodyParser = require('body-parser');
+    const connection = require('./src/database');
     const path = require('path');
     const routerAdmin = require('./routes/admin');
     const routerTec = require('./routes/tec');
@@ -21,7 +22,14 @@
     app.use(bodyParser.json());
     
     //sequelize
-
+    connection
+        .authenticate()
+        .then(() => {
+            console.log('Conexão com DB feita com sucesso!');
+        })
+        .catch((err) =>{
+            console.log('Erro ao logar no DB: ' + err);
+        });
 
 
 /************************ 
@@ -47,76 +55,37 @@
  *      OUTRAS
  ************************/
 
+    //Funcionario
+    var Funcionario = require('./model/Funcionario');
 
- //debug bd
-    require('./model/Autor')
-    require('./model/Livro')
-    const Autor = mongoose.model('Autor');
-    const Livro = mongoose.model('Livro');
-    var novolivro = {
-        nome: 'meu livro',
-        cod: 1
-    }
+    Funcionario.create({
+        nome: 'Luan Vilela',
+        codFuncionario: 13,
+        cargo: 'Técnico',
+        codCarga: 1,
+        salario: 998.00,
+        comissao: 0.35
 
-
-    var li = new Livro(novolivro).save().then(() => {
-        console.log('salvo com sucesso');
-    }).catch((err) => {
-        console.log('Não foi possivel salvar livro:::: ' + err);
     });
 
-    var novoAutor ={
-        nome: 'luan vilela',
-       // livros: novolivro
-    }
-    new Autor(novoAutor).save().then(() => {
-        console.log('salvo com sucesso');
-    }).catch((err) => {
-        console.log('Não foi possivel salvar autor:::: ' + err);
+    var Historico = require('./model/Historico');
+
+    Historico.create({
+        tipoDoc: 2,
+        laudo: "Cliente reclamado do barulho.",
+        funcionarioId: 1
     });
 
+    // Peça
+    var Peca = require('./model/Peca')
 
-    // const Funcionario = mongoose.model('Funcionarios')
-    // var novoFuncionario = {
-    //     nome: "Altair",
-    //     codFuncionario: 1,
-    //     cargo: 'Técnico',
-    //     codCargo: 1,
-    //     salario: 1200,
-    //     comissao: 35
-    // }
+    Peca.create({
+        nome: "Cabo AC",
+        valor: 9.98,
+        quantidade: 2
 
-    // const Peca = mongoose.model('Pecas');
-    // var novaPeca = {
-    //     nome: 'plug AC',
-    //     valor: 10,
-    //     quantidade: 2
-    // }
+    });
 
-    // const Historico = mongoose.model('Historicos');
-    // var novohistorico = {
-    //     tipoDoc: 1,
-    //     laudo: "cliente não sabe o que fala"
-        
-    // }
-
-    // new Funcionario(novoFuncionario).save().then(() => {
-    //     console.log('funcionario ' + novoFuncionario.nome + ' salvo com sucesso');
-    // }).catch((err) => {
-    //     console.log('Não foi possivel salvar funcionario:::: ' + err);
-    // });
-
-    // new Historico(novohistorico).save().then(() => {
-    //     console.log('Historico salvo com sucesso');
-    // }).catch((err) => {
-    //     console.log('Não foi possivel salvar funcionario:::: ' + err);
-    // });
-
-    // new Peca(novaPeca).save().then(() => {
-    //     console.log('Peça ' + novaPeca.nome + ' salvo com sucesso');
-    // }).catch((err) => {
-    //     console.log('Não foi possivel salvar funcionario:::: ' + err);
-    // });
 
     // listen
 app.listen(CONFIG.SERVER_PORT, function(){

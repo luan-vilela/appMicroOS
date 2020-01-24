@@ -1,2 +1,0 @@
-
-mongoose.model('OS', os);
