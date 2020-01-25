@@ -56,35 +56,52 @@
  ************************/
 
     //Funcionario
-    var Funcionario = require('./model/Funcionario');
+    var telefoneCliente = require('./models/TelefoneCliente');
+    var cliente = require('./models/Cliente');
 
-    Funcionario.create({
-        nome: 'Luan Vilela',
-        codFuncionario: 13,
-        cargo: 'Técnico',
-        codCarga: 1,
-        salario: 998.00,
-        comissao: 0.35
 
+    
+    var novoCliente = {
+        nome: 'Maria da Silva',
+        tipo: 'Física',
+        documento: '000999888-77',
+        endereco: 'Afonso Pena, 5356',
+        cidade: 'Campo Grande',
+        estado: 'Mato Grosso do Sul'
+    }
+
+    cliente.create(novoCliente).then((clienteSalvo) => {
+
+        var novoTelefone = [
+            {
+                telefone: '(67) 3333-4444',
+                clienteId: clienteSalvo.id
+            },
+            {
+                telefone: '(67) 4444-4444',
+                clienteId: clienteSalvo.id
+            },
+            {
+                telefone: '(67) 5555-4444',
+                clienteId: clienteSalvo.id
+            },
+            {
+                telefone: '(67) 6666-4444',
+                clienteId: clienteSalvo.id
+            }
+            
+        ]
+
+        for(i in novoTelefone)
+            telefoneCliente.create(novoTelefone[i]);
+
+        
+    }).catch((err) => {
+        console.log('Erro salvar Cliente: ' + err);
     });
+    
 
-    var Historico = require('./model/Historico');
-
-    Historico.create({
-        tipoDoc: 2,
-        laudo: "Cliente reclamado do barulho.",
-        funcionarioId: 1
-    });
-
-    // Peça
-    var Peca = require('./model/Peca')
-
-    Peca.create({
-        nome: "Cabo AC",
-        valor: 9.98,
-        quantidade: 2
-
-    });
+   
 
 
     // listen
