@@ -15,9 +15,15 @@ const Funcionario = connection.define('funcionarios', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
+    tipo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
     cargo: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'Funcionário'
     },
     codCarga: {
         type: Sequelize.INTEGER

@@ -1,13 +1,9 @@
 const Sequelize = require('sequelize');
 const connection = require('../src/database');
 const Funcionario = require('./Funcionario')
+const OS = require('./OS');
 
 const Historico = connection.define('historicos', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
     tipoDoc: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -21,7 +17,9 @@ const Historico = connection.define('historicos', {
     }
 });
 
+//Relacionamento
 Historico.belongsTo(Funcionario)
+Historico.belongsTo(OS)
 
 Historico.sync({force: false});
 

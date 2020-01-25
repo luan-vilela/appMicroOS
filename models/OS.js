@@ -1,12 +1,15 @@
 const Sequelize = require('sequelize');
 const connection = require('../src/database');
+const Cliente = require('./Cliente');
 
-
-const OS = connection.define('OS', {
-    id: {
+const OS = connection.define('OSs', {
+    numOS: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+        allowNull: false
+    },
+    sequencia:{
+        type: Sequelize.INTEGER,
+        allowNull: false
     },
     aparelho: {
         type: Sequelize.STRING
@@ -20,12 +23,12 @@ const OS = connection.define('OS', {
     observacao: {
         type: Sequelize.STRING
     },
-    defeito: {
+    acessorio: {
         type: Sequelize.TEXT
     },
-    acessorio:{
+    defeito:{
         type: Sequelize.STRING
-    }
+    },
     valor:{
         type: Sequelize.REAL
     },
@@ -34,6 +37,7 @@ const OS = connection.define('OS', {
     }
 });
 
+OS.belongsTo(Cliente)
 
 OS.sync({force: false});
 

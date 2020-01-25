@@ -54,54 +54,34 @@
  /************************ 
  *      OUTRAS
  ************************/
+    //OS
+    var OS = require('./models/OS')
+    var historico = require('./models/Historico');
 
-    //Funcionario
-    var telefoneCliente = require('./models/TelefoneCliente');
-    var cliente = require('./models/Cliente');
-
-
-    
-    var novoCliente = {
-        nome: 'Maria da Silva',
-        tipo: 'Física',
-        documento: '000999888-77',
-        endereco: 'Afonso Pena, 5356',
-        cidade: 'Campo Grande',
-        estado: 'Mato Grosso do Sul'
+    var novaOS = {
+        numOS: 65011,
+        sequencia: 1,
+        aparelho: 'Monitor',
+        modelo: 'LN32B452',
+        serie: '12D78es',
+        observacao: 'Tela arranhada',
+        acessorio: 'sem acessórios',
+        defeito: 'Liga e após 10s desliga.',
+        clienteId: 2
     }
-
-    cliente.create(novoCliente).then((clienteSalvo) => {
-
-        var novoTelefone = [
-            {
-                telefone: '(67) 3333-4444',
-                clienteId: clienteSalvo.id
-            },
-            {
-                telefone: '(67) 4444-4444',
-                clienteId: clienteSalvo.id
-            },
-            {
-                telefone: '(67) 5555-4444',
-                clienteId: clienteSalvo.id
-            },
-            {
-                telefone: '(67) 6666-4444',
-                clienteId: clienteSalvo.id
-            }
-            
-        ]
-
-        for(i in novoTelefone)
-            telefoneCliente.create(novoTelefone[i]);
-
-        
-    }).catch((err) => {
-        console.log('Erro salvar Cliente: ' + err);
-    });
     
 
-   
+    OS.create(novaOS).then((salvo) => {
+        var novoHistorico = {
+            tipoDoc: 1,
+            laudo: "Trocar fonte",
+            OsId: salvo.id
+        }
+
+        historico.create(novoHistorico)
+    }).catch((err) => {
+        console.log("ERRO: " + err);
+    });
 
 
     // listen
