@@ -19,10 +19,13 @@ router.get('/nova', (req, res) => {
     res.render('admin/nova', {adm: 'adm'});
 });
 
+router.get('/ordem', (req, res) => {
+    res.render('admin/cadastrar-os', {adm: 'adm'});
+});
+
 
 router.post('/auth', (req, res) => {
     var pass = req.body.inputPassword;
-
 
     Funcionario.findOne({
         where: { 
@@ -37,10 +40,6 @@ router.post('/auth', (req, res) => {
             res.render('admin/login');
         })
 
-
-
-
-        
 });
 
 router.get('/login', (req, res) => {

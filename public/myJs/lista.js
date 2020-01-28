@@ -44,13 +44,14 @@
         }
         else {
             let novasPecas = (peca.value).split(',')
-            console.log(novasPecas)
-            lista.push(novasPecas)
-            qtdNumero++;
-            peca.value = '';
-            peca.focus();
-            renderElement();
+            for(i in novasPecas){
+                lista.push(novasPecas[i])
 
+                qtdNumero++;
+                peca.value = '';
+                peca.focus();
+                renderElement();
+            }
         }
     }
 
