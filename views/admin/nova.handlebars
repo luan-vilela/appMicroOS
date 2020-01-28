@@ -1,0 +1,139 @@
+<form class="form-group" action="#" method="GET">
+    {{!-- Dados do cliente --}}
+    <div class="d-flex">
+        <hr class="my-auto flex-grow-1">
+        <div class="px-4 text-secondary">NOVO CLIENTE<strong>{{id}}</strong></div>
+        <hr class="my-auto flex-grow-1">
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="col-md-8">
+            <label for="cliente">Cliente</label>
+            <input type="text" class="form-control" id="cliente" placeholder="Nome do cliente" value="">
+        </div>
+        <div class="col-md-4">
+            <label for="data">Data de Entrada</label>
+            <input type="datetime-local" class="form-control" id="data">
+        </div>
+    </div>
+
+    
+
+    <div class="form-group">
+        <div class="form-row">
+            <label for="peca">Telefone <span id="qtdPeca" class="badge badge-dark ml-1">0</span></label>
+            <div class="input-group mb-1">
+                <input type="text" name="listaPeca" id="listaPeca" hidden> 
+                <input type="text" class="form-control" placeholder="Telefone"
+                    aria-label="Nome e modelo da peça" id="peca" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <input type="button" class="btn btn-primary" id="button-addon2" onclick="add()"
+                        value=" + adicionar">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {{!-- tags peças --}}
+    <div class="form-group">
+        <div id="addPeca"></div>
+    </div>
+
+
+    <div class="d-flex">
+        <hr class="my-auto flex-grow-1">
+        <div class="px-4 text-secondary">ENDEREÇO</div>
+        <hr class="my-auto flex-grow-1">
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="col-md-2">
+            <label for="cep">CEP</label>
+            <input type="number" class="form-control" id="cep" name="cep" placeholder="00000-000" onblur="pesquisacep(this.value)">
+        </div>
+        <div class="col-md-8">
+            <label for="rua">Rua</label>
+            <input type="text" class="form-control" id="rua" name="rua" placeholder="Nome da rua" value="">
+        </div>
+        <div class="col-md-2">
+            <label for="numero">Número</label>
+            <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" value="">
+        </div>
+
+    </div>
+    {{!-- Complemento --}}
+    <div class="form-row mb-2">
+        <div class="col-md-9">
+                <label for="complemento">Complemento</label>
+                <input type="number" class="form-control" id="complemento" name="complemento" placeholder="BL 1 C 2" >
+            </div>
+            <div class="col-md-3">
+                <label for="referencia">Referência</label>
+                <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Perto do mercado Sonic" value="">
+        </div>
+    </div>
+    <div class="form-row mb-2">
+        <div class="col-md-5">
+            <label for="bairro">Bairro</label>
+            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Nome do bairro" >
+        </div>
+        <div class="col-md-5">
+            <label for="cidade">Cidade</label>
+            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Nome da cidade" value="">
+        </div>
+        <div class="col-md-2">
+            <label for="uf">UF</label>
+            <input type="text" class="form-control" id="uf" name="uf" placeholder="Estado" value="">
+        </div>
+
+    </div>
+
+
+
+
+    <div class="card text-center mt-4 border-primary">
+        <div class="card-header bg-primary text-white">
+                Situação
+        </div>
+
+        <div class="card-body">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="apPronto" name="apPronto" class="custom-control-input">
+                <label class="custom-control-label" for="apPronto">Aparelho Pronto</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="apAguardando" name="apAguardando" class="custom-control-input">
+                <label class="custom-control-label" for="apAguardando">Aparelho aguardando peça</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="apOrcamento" name="apOrcamento" class="custom-control-input">
+                <label class="custom-control-label" for="apOrcamento">Passar Orçamento</label>
+            </div>
+        </div>
+        <div><button class="btn btn-primary mb-2">Fechar OS</button></div>
+    </div>
+    {{!-- rodapé --}}
+    <footer class=" pt-5 text-muted text-center text-small">
+        <p class="mb-1">Última alteração 12-01-20</p>
+    </footer>
+</form>
+
+
+{{!-- Javascript controle de peças  --}}
+<script src="/myJs/lista.js"></script>
+<script src="/myJs/pesquisaCEP.js"></script>
+<script>
+    
+    //----------------- PEGA DATA ------------------------
+    var data = document.getElementById('data');
+   
+    var dataAtual = new Date().toISOString();
+    dataAtual = dataAtual.substr(0, dataAtual.length-8)
+    data.value = dataAtual
+
+    
+
+
+
+</script>

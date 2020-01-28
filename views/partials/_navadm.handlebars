@@ -1,4 +1,4 @@
-<nav class="navbar navbar-icon-top navbar-expand-sm navbar-dark bg-primary">
+<nav class="navbar navbar-icon-top navbar-expand-md navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="/admin/index">Eletrônica alfa</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,20 @@
 
             </ul>
             <ul class="navbar-nav nav">
-
+               <li class="nav-item">
+                    <a class="nav-link" href="/admin/index">
+                    <i class="fa fa-home">
+                    </i>
+                    Home
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/admin/nova">
+                    <i class="fa fa-file-text">
+                    </i>
+                    Nova OS
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-cog">
@@ -18,17 +31,17 @@
                         Configuração
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Minhas OS</a>
-                        <a class="dropdown-item" href="#">Gráficos</a>
-                        <a class="dropdown-item" href="#">Gerenciar usuários</a>
+                        <a class="dropdown-item" href="/admin/gerenciar">Minhas OS</a>
+                        <a class="dropdown-item" href="/admin/gerenciar">Gráficos</a>
+                        <a class="dropdown-item" href="/admin/gerenciar">Gerenciar funcionários</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Meu perfil</a>
+                        <a class="dropdown-item" href="/admin/gerenciar">Meu perfil</a>
                     </div>
                 </li>
 
                 {{!-- Mensagens --}}
                 <li class="nav-item">
-                <a class="nav-link" href="mensagens">
+                <a class="nav-link" href="/admin/gerenciar">
                 <i class="fa fa-envelope-o">
                     <span class="badge badge-primary">{{mensagen}}</span>
                 </i>

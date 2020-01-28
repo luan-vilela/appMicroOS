@@ -11,6 +11,14 @@ const Funcionario = connection.define('funcionarios', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    usuario:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+    },
+    senha: {
+        type: Sequelize.STRING
+    },
     codFuncionario: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -44,6 +52,6 @@ const Funcionario = connection.define('funcionarios', {
 
 });
 
-Funcionario.sync({force: false});
+Funcionario.sync({alter: false});
 
 module.exports = Funcionario;
